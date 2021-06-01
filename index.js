@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 
 const fetch = require('node-fetch'); 
 app.listen(port, () => {
-    console.log('connected!')
+    console.log(`connected on port: ${port}`)
 })
 
 app.use(express.static('public'))
