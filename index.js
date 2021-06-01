@@ -6,9 +6,11 @@ const dataBase = require('nedb');
 const mydb = new dataBase('nonSQL.db'); 
 mydb.loadDatabase(); 
 
+const port = process.env.PORT || 3000; 
+
 const fetch = require('node-fetch'); 
-app.listen(3000, () => {
-    console.log('connected my guy 😎')
+app.listen(port, () => {
+    console.log('connected!')
 })
 
 app.use(express.static('public'))
@@ -22,7 +24,7 @@ app.use(express.static('public'))
 //     const formatedData = await responce.json(); 
 
 //     console.log(`city: ${formatedData.name}`); 
-//     console.log(`Ight my g, it humid af: ${formatedData.main.humidity}`); 
+//     console.log(`the humidity is:  ${formatedData.main.humidity}`); 
 //     //mydb.insert(formatedData); 
 // }
 
