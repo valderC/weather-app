@@ -1,0 +1,22 @@
+{
+  "name": "project2node",
+  "version": "1.0.0",
+  "description": "API project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "project",
+    "APIs",
+    "Express"
+  ],
+  "author": "Yurik Valderrama",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nedb": "^1.8.0",
+    "node-fetch": "^2.6.1"
+  }
+}
