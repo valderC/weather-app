@@ -1,5 +1,7 @@
 const express = require('express'); 
 const app = express(); 
+
+const fetch = require('node-fetch'); 
 require('dotenv').config(); 
 
 const dataBase = require('nedb'); 
@@ -7,13 +9,10 @@ const mydb = new dataBase('nonSQL.db');
 mydb.loadDatabase(); 
 
 const port = process.env.PORT || 3000; 
-
-const fetch = require('node-fetch'); 
 app.listen(port, () => {
     console.log(`connected on port: ${port}`)
-})
-
-app.use(express.static('public'))
+}); 
+app.use(express.static('public')); 
 
 
 // async function callWeather(){
