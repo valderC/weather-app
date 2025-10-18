@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="diplay-flex container text-center">
+        <h3 class="display-3 ">Weather App</h3>
+        <!-- <button class="btn btn-primary">Start</button> -->
+        <p class="lead">location coordinates: latitude <span id="lat" class="text-danger"></span> longitude <span id="long" class="text-danger"></span></p>
+        <p class="lead">It looks like you're located in <span id="city" class="text-danger"></span></p>
+        <h4 class="display-4 text-success">Temperature: <span id="temp"></span></h4>
+    </div>
+
+   <script>
+       if ('geolocation' in navigator){
+           //if geolocation is available 
+           navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude; 
+            const long = position.coords.longitude;
+            //console.log(`${lat} & ${long}`); 
+            document.getElementById('lat').textContent = lat.toFixed(2); 
+            document.getElementById('long').textContent = long.toFixed(2); 
+            //sending data to server via route params and get 
+            const api_url = `weather/${lat},${long}`; 
+
+            const responce = await fetch(api_url); 
+            const dataFormatedJSON = await responce.json(); 
+            const city = dataFormatedJSON.name; 
+            console.log(dataFormatedJSON); 
+
+            document.getElementById('city').textContent = city; 
+            document.getElementById('temp').textContent = dataFormatedJSON.main.temp.toFixed(0); 
+        });
+
+        }
+           else {
+               //if geolocation is n/a 
+
+           }
+       
+
+   </script>
+</body>
+</html>
